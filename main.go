@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/bwmarrin/discordgo"
@@ -55,7 +56,7 @@ func readTokenFromFile(path string) string {
 		fmt.Println("Failed to read token file:", err)
 		os.Exit(1)
 	}
-	return string(data)
+	return strings.TrimSpace(string(data))
 }
 
 func startDailyMessage(s *discordgo.Session, channelID string) {
