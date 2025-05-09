@@ -30,6 +30,8 @@ func main() {
 
 	tasks.InitTasks()
 
+	dg.AddHandler(tasks.OnMessageCreate)
+
 	// Start scheduled message routine
 	tasks.InitDailyMessage()
 	go tasks.StartDailyMessage(dg)
