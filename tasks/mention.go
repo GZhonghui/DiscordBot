@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	ChannelLoveID = "1370252312949293146" // #love
+	ChannelLoveID = "1370348253312192582" // #love
 )
 
 // onMessageCreate handles incoming messages

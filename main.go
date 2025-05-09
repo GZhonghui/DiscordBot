@@ -27,6 +27,7 @@ func main() {
 	defer dg.Close()
 
 	fmt.Println("Bot is now running.")
+	dg.ChannelMessageSend(tasks.ChannelGeneralID, "我回来啦~")
 
 	tasks.InitTasks()
 
