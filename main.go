@@ -10,10 +10,13 @@ import (
 )
 
 func main() {
-	token := tools.ReadTokenFromFile("token.txt")
+	if !tools.ReadTokenFromFile("token.json") {
+		fmt.Println("Failed to read token file")
+		return
+	}
 
 	// Create Discord session
-	dg, err := discordgo.New("Bot " + token)
+	dg, err := discordgo.New("Bot " + tools.DiscordKey)
 	if err != nil {
 		fmt.Println("Failed to create Discord session:", err)
 		return
@@ -27,7 +30,7 @@ func main() {
 	defer dg.Close()
 
 	fmt.Println("Bot is now running.")
-	dg.ChannelMessageSend(tasks.ChannelGeneralID, "我回来啦~")
+	dg.ChannelMessageSend(tasks.ChannelGeneralID, "主人，我回来啦~")
 
 	tasks.InitTasks()
 
