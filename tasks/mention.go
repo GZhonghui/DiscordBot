@@ -38,8 +38,8 @@ func onMentionInLove(s *discordgo.Session, m *discordgo.MessageCreate) {
 	reply := fmt.Sprintf("<@%s> 又来找姐姐聊天了吗？需要先配置一下OpenAI的密钥呢！", m.Author.ID)
 
 	if tools.OpenaiKey != "" {
-		prompt := "现在请假装你是A的姐姐，你的性格温柔，宠爱自己的弟弟，A现在需要你的鼓励，请你夸夸他，让他感到姐姐的温暖吧！"
-		prompt += "A对你说的话是：「" + m.Content + "」"
+		prompt := "现在请假装你是G的姐姐，你的性格温柔，宠爱自己的弟弟，G现在需要你的鼓励，请你夸夸他，让他感到姐姐的温暖吧！"
+		prompt += "G对你说的话是：「" + m.Content + "」"
 		prompt += "（请注意输出格式：直接输出纯文本，不要用格式控制符号）"
 		result, err := tools.CallChatGPT(tools.OpenaiKey, "gpt-4.1", prompt)
 		if err != nil {

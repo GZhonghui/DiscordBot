@@ -32,8 +32,8 @@ func main() {
 	fmt.Println("Bot is now running.")
 
 	onlineHi := "主人，我回来啦~"
-	jt, err := tools.GetSoup(tools.JuheJitang)
-	if err == nil {
+	jt, jterr := tools.GetSoup(tools.JuheJitang)
+	if jterr == nil {
 		onlineHi += "\n" + jt
 	}
 	dg.ChannelMessageSend(tasks.ChannelGeneralID, onlineHi)
@@ -45,6 +45,8 @@ func main() {
 	// Start scheduled message routine
 	tasks.InitDailyMessage()
 	go tasks.StartDailyMessage(dg)
+
+	tasks.StartDailyJoke(dg)
 
 	// Handle graceful shutdown
 	tools.WaitForQuit()
