@@ -31,7 +31,7 @@ func main() {
 
 	fmt.Println("Bot is now running.")
 
-	onlineHi := "主人，我回来啦~"
+	onlineHi := "主人，我回来啦~" + tools.RandomFace()
 	jt, jterr := tools.GetSoup(tools.JuheJitang)
 	if jterr == nil {
 		onlineHi += "\n" + jt

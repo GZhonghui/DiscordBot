@@ -36,7 +36,9 @@ func StartDailyMessage(s *discordgo.Session) {
 		today := time.Now().In(tokyoLoc)
 		daysSince := int(today.Sub(StartDate).Hours()/24) + 1
 		year, month, day := today.Date()
-		msg := fmt.Sprintf("早上好、亲爱的！(/≧▽≦/)\n今天是%d年%d月%d日、是爱你第%d天哦~\n今天也要好好爱自己哦(◕ˇ∀ˇ◕。)", year, int(month), day, daysSince)
+		msg := "早上好、亲爱的！" + tools.RandomFace() + "\n"
+		msg += fmt.Sprintf("今天是%d年%d月%d日、是爱你第%d天哦~\n", year, int(month), day, daysSince)
+		msg += "今天也要好好爱自己哦" + tools.RandomFace()
 
 		jt, jterr := tools.GetSoup(tools.JuheJitang)
 		if jterr == nil {

@@ -13,7 +13,7 @@ func StartDailyJoke(s *discordgo.Session) {
 		xh, xherr := tools.GetRandomJoke(tools.JuheXiaohua)
 		if xherr == nil {
 			for _, joke := range xh {
-				msg = joke.Content + "\n亲爱的要开心哦~(ˊo̴̶̷̤ ̫ o̴̶̷̤ˋ)"
+				msg = joke.Content + "\n亲爱的要开心哦~" + tools.RandomFace()
 				break
 			}
 		}
