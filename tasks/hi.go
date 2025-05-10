@@ -5,6 +5,8 @@ import (
 	"time"
 
 	"github.com/bwmarrin/discordgo"
+
+	"local.dev/DiscordBot/tools"
 )
 
 const (
@@ -35,6 +37,11 @@ func StartDailyMessage(s *discordgo.Session) {
 		daysSince := int(today.Sub(StartDate).Hours()/24) + 1
 		year, month, day := today.Date()
 		msg := fmt.Sprintf("早上好、亲爱的！(/≧▽≦/)\n今天是%d年%d月%d日、是爱你第%d天哦~\n今天也要好好爱自己哦(◕ˇ∀ˇ◕。)", year, int(month), day, daysSince)
+
+		jt, jterr := tools.GetSoup(tools.JuheJitang)
+		if jterr == nil {
+			msg += "\n" + jt
+		}
 
 		_, err := s.ChannelMessageSend(ChannelHiID, msg)
 		if err != nil {

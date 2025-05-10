@@ -8,13 +8,17 @@ import (
 )
 
 type TokenConfig struct {
-	DiscordKey string `json:"discord"`
-	OpenaiKey  string `json:"openai"`
+	DiscordKey  string `json:"discord"`
+	OpenaiKey   string `json:"openai"`
+	JuheJitang  string `json:"jhsj_xljt"`
+	JuheXiaohua string `json:"jhsj_xh"`
 }
 
 var (
-	DiscordKey string
-	OpenaiKey  string
+	DiscordKey  string
+	OpenaiKey   string
+	JuheJitang  string
+	JuheXiaohua string
 )
 
 func ReadTokenFromFile(path string) bool {
@@ -32,6 +36,8 @@ func ReadTokenFromFile(path string) bool {
 
 	DiscordKey = config.DiscordKey
 	OpenaiKey = config.OpenaiKey
+	JuheJitang = config.JuheJitang
+	JuheXiaohua = config.JuheXiaohua
 	return true
 }
 

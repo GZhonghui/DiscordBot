@@ -30,7 +30,13 @@ func main() {
 	defer dg.Close()
 
 	fmt.Println("Bot is now running.")
-	dg.ChannelMessageSend(tasks.ChannelGeneralID, "主人，我回来啦~")
+
+	onlineHi := "主人，我回来啦~"
+	jt, err := tools.GetSoup(tools.JuheJitang)
+	if err == nil {
+		onlineHi += "\n" + jt
+	}
+	dg.ChannelMessageSend(tasks.ChannelGeneralID, onlineHi)
 
 	tasks.InitTasks()
 
